@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Instituto Teológico Dr. Manoel Jesus</title>
+
+<style>
+:root {
+  --azul-marinho: #071a33;
+  --azul: #0d2d52;
+  --dourado: #d4af37;
+  --dourado-claro: #f1d77a;
+  --branco: #ffffff;
+  --cinza: #f4f6f8;
+  --texto: #1d2733;
+  --sombra: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--texto);
+  background: var(--branco);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+}
+
+header {
+  background: var(--azul-marinho);
+  color: var(--branco);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: bold;
+  color: var(--dourado-claro);
+  font-size: 1.05rem;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--dourado);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.7rem;
+  color: var(--dourado);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--dourado-claro);
+}
+
+.menu-button {
+  display: none;
+  border: 1px solid var(--dourado);
+  background: transparent;
+  color: var(--branco);
+  padding: 8px 11px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.hero {
+  background:
+    linear-gradient(rgba(7, 26, 51, 0.9), rgba(7, 26, 51, 0.9)),
+    radial-gradient(circle at center, #174b7d 0%, var(--azul-marinho) 65%);
+  color: var(--branco);
+  padding: 95px 0;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 50px;
+}
+
+.hero h1 {
+  color: var(--dourado-claro);
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  max-width: 650px;
+  font-size: 1.15rem;
+  margin-bottom: 28px;
+  color: #e8edf3;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: 2px solid transparent;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--dourado);
+  color: var(--azul-marinho);
+}
+
+.btn-primary:hover {
+  background: var(--dourado-claro);
+}
+
+.btn-outline {
+  border-color: var(--dourado);
+  color: var(--dourado-claro);
+}
+
+.btn-outline:hover {
+  background: var(--dourado);
+  color: var(--azul-marinho);
+}
+
+.hero-symbol {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.eagle {
+  width: 230px;
+  height: 230px;
+  border: 4px solid var(--dourado);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--dourado);
+  font-size: 8rem;
+  text-shadow: 0 0 18px rgba(212, 175, 55, 0.45);
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.2);
+}
+
+section {
+  padding: 75px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-title h2 {
+  color: var(--azul-marinho);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: 10px;
+}
+
+.section-title p {
+  max-width: 720px;
+  margin: 0 auto;
+  color: #5d6875;
+}
+
+.about {
+  background: var(--cinza);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.about-card,
+.contact-card,
+.course-card,
+.director-card {
+  background: var(--branco);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+}
+
+.about-card {
+  padding: 30px;
+}
+
+.about-card h3 {
+  color: var(--azul-marinho);
+  margin-bottom: 15px;
+}
+
+.about-card p {
+  margin-bottom: 14px;
+}
+
+.highlight-list {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.highlight-list li {
+  margin-bottom: 12px;
+  padding-left: 28px;
+  position: relative;
+}
+
+.highlight-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--dourado);
+  font-weight: bold;
+}
+
+.director-card {
+  padding: 35px;
+  background: var(--azul-marinho);
+  color: var(--branco);
+  text-align: center;
+}
+
+.director-photo {
+  width: 125px;
+  height: 125px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  border: 4px solid var(--dourado);
+  display: grid;
+  place-items: center;
+  font-size: 3.5rem;
+  color: var(--dourado);
+}
+
+.director-card h3 {
+  color: var(--dourado-claro);
+  margin-bottom: 8px;
+}
+
+.director-card p {
+  color: #e4eaf0;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.course-card {
+  padding: 25px;
+  border-top: 5px solid var(--dourado);
+  transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+}
+
+.course-card h3 {
+  color: var(--azul-marinho);
+  margin-bottom: 12px;
+}
+
+.course-card p {
+  color: #5d6875;
+  margin-bottom: 18px;
+}
+
+.course-card ul {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.course-card li {
+  padding: 7px 0;
+  border-bottom: 1px solid #e5e8eb;
+  font-size: 0.94rem;
+}
+
+.course-card li:last-child {
+  border-bottom: none;
+}
+
+.course-card li::before {
+  content: "•";
+  color: var(--dourado);
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.free-courses {
+  background: var(--cinza);
+}
+
+.badge {
+  display: inline-block;
+  background: var(--azul-marinho);
+  color: var(--dourado-claro);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  margin-bottom: 12px;
+}
+
+.admission {
+  background: var(--azul-marinho);
+  color: var(--branco);
+}
+
+.admission .section-title h2 {
+  color: var(--dourado-claro);
+}
+
+.admission .section-title p {
+  color: #dce5ee;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.step {
+  text-align: center;
+  padding: 20px;
+}
+
+.step-number {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--dourado);
+  color: var(--azul-marinho);
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.step h3 {
+  color: var(--dourado-claro);
+  margin-bottom: 8px;
+}
+
+.step p {
+  color: #dce5ee;
+  font-size: 0.94rem;
+}
+
+.contact {
+  background: var(--cinza);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.contact-card {
+  padding: 30px;
+}
+
+.contact-card h3 {
+  color: var(--azul-marinho);
+  margin-bottom: 18px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 17px;
+  align-items: flex-start;
+}
+
+.contact-icon {
+  color: var(--dourado);
+  font-size: 1.25rem;
+  min-width: 25px;
+}
+
+.contact-item strong {
+  display: block;
+  color: var(--azul-marinho);
+}
+
+.contact-item span,
+.contact-item a {
+  color: #5d6875;
+}
+
+.contact-item a:hover {
+  color: var(--azul);
+  text-decoration: underline;
+}
+
+form {
+  display: grid;
+  gap: 14px;
+}
+
+label {
+  font-weight: bold;
+  color: var(--azul-marinho);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccd3da;
+  border-radius: 6px;
+  font: inherit;
+  margin-top: 5px;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+footer {
+  background: #041225;
+  color: #dce5ee;
+  padding: 30px 0;
+  text-align: center;
+}
+
+footer strong {
+  color: var(--dourado-claro);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 15px 0;
+}
+
+.footer-links a:hover {
+  color: var(--dourado-claro);
+}
+
+.copyright {
+  font-size: 0.88rem;
+  color: #aeb9c5;
+}
+
+@media (max-width: 850px) {
+  .menu-button {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 78px;
+    left: 0;
+    right: 0;
+    background: var(--azul-marinho);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px 4%;
+    gap: 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 13px 0;
+  }
+
+  .hero-content,
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 70px 0;
+  }
+
+  .hero-symbol {
+    min-height: 210px;
+  }
+
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .navbar {
+    min-height: 68px;
+  }
+
+  .logo {
+    font-size: 0.85rem;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.35rem;
+  }
+
+  .nav-links {
+    top: 68px;
+  }
+
+  section {
+    padding: 55px 0;
+  }
+
+  .courses-grid,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    text-align: center;
+  }
+
+  .eagle {
+    width: 180px;
+    height: 180px;
+    font-size: 6rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navbar">
+    <a href="#inicio" class="logo">
+      <span class="logo-icon">🦅</span>
+      <span>Instituto Teológico<br>Dr. Manoel Jesus</span>
+    </a>
+
+    <button class="menu-button" id="menuButton" aria-label="Abrir menu">☰</button>
+
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#graduacao">Graduação</a></li>
+        <li><a href="#cursos-livres">Cursos Livres</a></li>
+        <li><a href="#matricula">Matrícula</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+  <div class="container hero-content">
+    <div>
+      <h1>Conhecimento que transforma vidas</h1>
+      <p>
+        Formação teológica séria, acessível e comprometida com a Palavra de Deus,
+        preparando líderes para servir à Igreja e à sociedade.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#graduacao" class="btn btn-primary">Conheça os cursos</a>
+        <a href="#contato" class="btn btn-outline">Fale conosco</a>
+      </div>
+    </div>
+
+    <div class="hero-symbol" aria-label="Símbolo de uma águia">
+      <div class="eagle">🦅</div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="section-title">
+      <h2>Sobre o Instituto</h2>
+      <p>Uma instituição dedicada à formação cristã, ministerial e acadêmica.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Excelência na formação teológica</h3>
+        <p>
+          O Instituto Teológico Dr. Manoel Jesus oferece ensino fundamentado nas
+          Escrituras, com professores preparados e uma proposta pedagógica voltada
+          para o desenvolvimento espiritual, intelectual e ministerial.
+        </p>
+        <p>
+          Nosso objetivo é formar homens e mulheres capacitados para interpretar
+          a Bíblia, ensinar a verdade e servir com responsabilidade.
+        </p>
+
+        <ul class="highlight-list">
+          <li>Ensino bíblico e teológico de qualidade</li>
+          <li>Professores experientes e comprometidos</li>
+          <li>Formação presencial e flexível</li>
+          <li>Ambiente de crescimento e comunhão</li>
+        </ul>
+      </div>
+
+      <div class="director-card">
+        <div class="director-photo">✝</div>
+        <h3>Pr. Dr. Manoel Jesus</h3>
+        <p>
+          Diretor do Instituto Teológico Dr. Manoel Jesus, dedicado à formação
+          de líderes cristãos e ao fortalecimento do ensino da Palavra de Deus.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="graduacao">
+  <div class="container">
+    <div class="section-title">
+      <h2>Cursos de Graduação</h2>
+      <p>Escolha uma formação completa para aprofundar seus conhecimentos e desenvolver seu chamado.</p>
+    </div>
+
+    <div class="courses-grid">
+      <article class="course-card">
+        <span class="badge">Graduação</span>
+        <h3>Bacharelado em Teologia</h3>
+        <p>Formação ampla em Bíblia, doutrina cristã, história da Igreja e prática ministerial.</p>
+        <ul>
+          <li>Introdução ao Antigo Testamento</li>
+          <li>Introdução ao Novo Testamento</li>
+          <li>Teologia Sistemática</li>
+          <li>História do Cristianismo</li>
+          <li>Hermenêutica Bíblica</li>
+        </ul>
+        <a href="#contato" class="btn btn-primary">Tenho interesse</a>
+      </article>
+
+      <article class="course-card">
+        <span class="badge">Graduação</span>
+        <h3>Teologia Pastoral</h3>
+        <p>Preparação para liderança, cuidado de pessoas, pregação e administração ministerial.</p>
+        <ul>
+          <li>Homilética</li>
+          <li>Aconselhamento Pastoral</li>
+          <li>Liderança Cristã</li>
+          <li>Administração Eclesiástica</li>
+          <li>Estágio Ministerial</li>
+        </ul>
+        <a href="#contato" class="btn btn-primary">Tenho interesse</a>
+      </article>
+
+      <article class="course-card">
+        <span class="badge">Graduação</span>
+        <h3>Missões e Evangelismo</h3>
+        <p>Capacitação para anunciar o Evangelho e atuar em diferentes contextos culturais e sociais.</p>
+        <ul>
+          <li>Evangelismo Bíblico</li>
+          <li>Missões Transculturais</li>
+          <li>Apologética Cristã</li>
+          <li>Plantação de Igrejas</li>
+          <li>Projetos Missionários</li>
+        </ul>
+        <a href="#contato" class="btn btn-primary">Tenho interesse</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="free-courses" id="cursos-livres">
+  <div class="container">
+    <div class="section-title">
+      <h2>Cursos Livres de Teologia</h2>
+      <p>Estude temas específicos e fortaleça sua caminhada cristã no seu próprio ritmo.</p>
+    </div>
+
+    <div class="courses-grid">
+      <article class="course-card">
+        <span class="badge">Curso Livre</span>
+        <h3>Panorama da Bíblia</h3>
+        <p>Conheça a estrutura, os principais acontecimentos e a mensagem central das Escrituras.</p>
+        <a href="#contato" class="btn btn-primary">Saiba mais</a>
+      </article>
+
+      <article class="course-card">
+        <span class="badge">Curso Livre</span>
+        <h3>Escola de Pregadores</h3>
+        <p>Aprenda princípios de interpretação, preparação e apresentação de sermões bíblicos.</p>
+        <a href="#contato" class="btn btn-primary">Saiba mais</a>
+      </article>
+
+      <article class="course-card">
+        <span class="badge">Curso Livre</span>
+        <h3>Liderança Cristã</h3>
+        <p>Desenvolva uma liderança servidora, ética, bíblica e comprometida com pessoas.</p>
+        <a href="#contato" class="btn btn-primary">Saiba mais</a>
+      </article>
+
+      <article class="course-card">
+        <span class="badge">Curso Livre</span>
+        <h3>Hermenêutica Bíblica</h3>
+        <p>Aprenda fundamentos para interpretar corretamente os textos da Bíblia.</p>
+        <a href="#contato" class="btn btn-primary">Saiba mais</a>
+      </article>
+
+      <article class="course-card">
+        <span class="badge">Curso Livre</span>
+        <h3>Capelania Cristã</h3>
+        <p>Prepare-se para servir em hospitais, escolas, empresas, presídios e projetos sociais.</p>
+        <a href="#contato" class="btn btn-primary">Saiba mais</a>
+      </article>
+
+      <article class="course-card">
+        <span class="badge">Curso Livre</span>
+        <h3>Evangelismo Prático</h3>
+        <p>Conheça estratégias bíblicas e práticas para compartilhar a fé com amor e sabedoria.</p>
+        <a href="#contato" class="btn btn-primary">Saiba mais</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="admission" id="matricula">
+  <div class="container">
+    <div class="section-title">
+      <h2>Como fazer sua matrícula</h2>
+      <p>Comece agora sua jornada de crescimento e preparação ministerial.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Escolha o curso</h3>
+        <p>Analise as opções disponíveis e escolha a formação que mais combina com seu objetivo.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Entre em contato</h3>
+        <p>Envie uma mensagem para receber informações sobre duração, valores e turmas.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Envie seus dados</h3>
+        <p>Preencha o cadastro com seus dados pessoais e documentos solicitados.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Comece a estudar</h3>
+        <p>Após a confirmação da matrícula, você receberá as orientações para iniciar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contato">
+  <div class="container">
+    <div class="section-title">
+      <h2>Entre em contato</h2>
+      <p>Estamos prontos para atender você e esclarecer todas as suas dúvidas.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Fale com o Instituto</h3>
+
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <strong>WhatsApp</strong>
+            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener">
+              (00) 00000-0000
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div>
+            <strong>E-mail</strong>
+            <a href="mailto:contato@institutoteologico.com.br">
+              contato@institutoteologico.com.br
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <strong>Endereço</strong>
+            <span>Informe aqui o endereço do Instituto</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">🕒</div>
+          <div>
+            <strong>Atendimento</strong>
+            <span>Segunda a sexta, das 8h às 18h</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h3>Envie uma mensagem</h3>
+
+        <form id="contactForm">
+          <div>
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+          </div>
+
+          <div>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+          </div>
+
+          <div>
+            <label for="curso">Curso de interesse</label>
+            <select id="curso" name="curso" required>
+              <option value="">Selecione uma opção</option>
+              <option>Bacharelado em Teologia</option>
+              <option>Teologia Pastoral</option>
+              <option>Missões e Evangelismo</option>
+              <option>Curso Livre de Teologia</option>
+              <option>Ainda não sei</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <strong>Instituto Teológico Dr. Manoel Jesus</strong>
+
+    <div class="footer-links">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#graduacao">Graduação</a>
+      <a href="#cursos-livres">Cursos Livres</a>
+      <a href="#contato">Contato</a>
+    </div>
+
+    <p class="copyright">
+      © <span id="year"></span> Instituto Teológico Dr. Manoel Jesus. Todos os direitos reservados.
+    </p>
+  </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menuButton");
+const navLinks = document.getElementById("navLinks");
+
+menuButton.addEventListener("click", function () {
+  navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll("#navLinks a").forEach(function (link) {
+  link.addEventListener("click", function () {
+    navLinks.classList.remove("active");
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+document.getElementById("contactForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const curso = document.getElementById("curso").value;
+  const mensagem = document.getElementById("mensagem").value.trim();
+
+  const texto =
+    "Olá, Instituto Teológico Dr. Manoel Jesus!%0A%0A" +
+    "Nome: " + encodeURIComponent(nome) + "%0A" +
+    "E-mail: " + encodeURIComponent(email) + "%0A" +
+    "Curso de interesse: " + encodeURIComponent(curso) + "%0A" +
+    "Mensagem: " + encodeURIComponent(mensagem);
+
+  const numeroWhatsApp = "5500000000000";
+
+  window.open("https://wa.me/" + numeroWhatsApp + "?text=" + texto, "_blank");
+});
+</script>
+
+</body>
+</html>
